@@ -733,3 +733,9 @@ h2, h3 { letter-spacing: -0.015em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; transition-duration: 0.01ms !important; }
 }
+
+/* The rise animation gives the header and the cards their own layers; lift the header so its
+   dropdown (quiz settings) opens above the question card instead of under it. */
+.page-head { position: relative; z-index: 12; }
+/* On phones the settings button sits on the left, so open the panel rightwards to stay on screen. */
+@media (max-width: 640px) { .menu-panel { left: 0; right: auto; } }
