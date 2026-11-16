@@ -140,12 +140,14 @@ export default function QuizPage() {
   }
 
   async function changePrefs(update: PreferencesUpdate) {
-    try {
-      setState(await api.setPreferences(sessionId, update));
-    } catch (e) {
-      setError(api.errorMessage(e));
-    }
+  try {
+    const s = await api.setPreferences(sessionId, update);
+    setState(s);
+    if (!result) setCurrent(s.current_question);   // 还没作答时，换成新题型的题
+  } catch (e) {
+    setError(api.errorMessage(e));
   }
+}
 
   async function end() {
     if (!state) return;
