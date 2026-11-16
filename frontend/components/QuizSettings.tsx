@@ -81,7 +81,7 @@ export default function QuizSettings({ prefs, onChange }: Props) {
               {l.label}
             </label>
           ))}
-          <div className="muted menu-foot">Applies from the next question.</div>
+          <div className="muted menu-foot">Switches the current question.</div>
         </div>
       )}
     </div>
