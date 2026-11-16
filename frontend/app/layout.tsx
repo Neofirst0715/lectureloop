@@ -16,7 +16,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/" className="hud-brand" title="Review what you're unsure about. Find the root cause, not just the wrong answer.">
             <span className="brand-mark">↻</span> LectureLoop
           </Link>
-          {USE_MOCK && <span className="hud-badge">mock data</span>}
         </header>
         <main>{children}</main>
       </body>
