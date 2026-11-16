@@ -304,6 +304,11 @@ def create_app(store: Store | None = None) -> FastAPI:
                 changed.append(f"difficulty={body.difficulty}")
             if changed:
                 session.add_trace("preferences", "The student changed the quiz settings", ", ".join(changed))
+                current = session.issued.get(session.current_question or "")
+                if current and any(c.startswith("question_type") for c in changed):
+                    Agent(store, lecture, session, get_settings())._issue(
+                        current.concept_id, "Switch the current question to the type the student picked"
+                    )
                 store.save_session(session)
         return get_session(session_id)
 

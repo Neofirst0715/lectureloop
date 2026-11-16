@@ -657,6 +657,9 @@ export async function setPreferences(sessionId: string, update: PreferencesUpdat
     changed.push(`difficulty=${update.difficulty}`);
   }
   if (changed.length) addTrace(s, "preferences", "The student changed the quiz settings", changed.join(", "));
+  if (changed.some((c) => c.startsWith("question_type")) && s.current) {
+  s.current = issue(s, s.current.concept_id);
+}
   return getSession(sessionId);
 }
 
