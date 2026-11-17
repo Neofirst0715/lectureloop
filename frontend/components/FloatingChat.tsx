@@ -31,7 +31,7 @@ export default function FloatingChat({ messages, onSend }: Props) {
         </div>
       ) : (
         <button type="button" className="floating-btn" onClick={() => setOpen(true)}>
-↻ Ask the ai{messages.length ? ` (${messages.length})` : ""}        </button>
+↻ Ask ai{messages.length ? ` (${messages.length})` : ""}        </button>
       )}
     </div>
   );
