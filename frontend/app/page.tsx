@@ -5,7 +5,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import * as api from "@/lib/api";
-import { MAX_UPLOAD_MB, USE_MOCK } from "@/lib/config";
+import { MAX_UPLOAD_MB } from "@/lib/config";
 
 type Phase = "idle" | "uploading" | "processing" | "error";
 
@@ -92,11 +92,6 @@ export default function UploadPage() {
           <button className="btn primary" disabled={!file || busy} onClick={() => start(file)}>
             Upload and analyze
           </button>
-          {USE_MOCK && (
-            <button className="btn" disabled={busy} onClick={() => start(null)}>
-              Try the demo lecture
-            </button>
-          )}
         </div>
 
         {busy && (
